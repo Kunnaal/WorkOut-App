@@ -1,0 +1,160 @@
+<!--
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>SignUp</title>
+    {% comment %} <link rel="stylesheet" href="style.css"> {% endcomment %}
+  </head>
+  <body>
+
+  {% for message in messages %}
+    <div class='alert alert-{{ message.tags }} alert-dismissible fade show' role='alert'>
+      <strong>Message:</strong> {{ message }}
+      <button type='button' class = 'close' data-dismiss='alert' aria-lable="X">
+        <span aria-hidden='true'>&times;</span>
+      </button>
+    </div>
+  {% endfor %}
+
+	<h1>SignUp</h1>
+
+  <form action='/signup' method='post'>
+    {% csrf_token %}
+    <lable for=''>Username</lable>
+    <input type='text' id='username' name='username' placeholder='Create username(a-z 0-9)'>
+    <br>
+    <lable for=''>First Name</lable>
+    <input type='text' id='fname' name='fname' placeholder='Enter first name'>
+    <br>
+    <lable for=''>Last Name</lable>
+    <input type='text' id='lname' name='lname' placeholder='Enter last name'>
+    <br>
+    <lable for=''>Email</lable>
+    <input type='email' id='email' name='email' placeholder='Enter email'>
+    <br>
+    <lable for=''>Password</lable>
+    <input type='password' id='pass1' name='pass1' placeholder='Enter password'>
+    <br>
+    <lable for=''>Confirm Password</lable>
+    <input type='password' id='pass2' name='pass2' placeholder='Confirm password'>
+    <br>
+    <button type='submit'>Sign Up</button>
+  </form>
+  </body>
+</html>
+-->
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>SignUp</title>
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static '/css/signin.css' %}">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  </head>
+
+<body>
+
+    {% for message in messages %}
+    <div class='alert alert-{{ message.tags }} alert-dismissible fade show' role='alert'>
+        <strong>Message:</strong> {{ message }}
+        <button type='button' class = 'close' data-dismiss='alert' aria-lable="X">
+            <span aria-hidden='true'>&times;</span>
+        </button>
+    </div>
+    {% endfor %}
+
+    <div style="width: 40vw; left: 30vw; position: absolute; top: 15vh">
+      <div class="card signup_v4 mb-30">
+          <div class="card-body">
+              <ul class="nav nav-tabs" id="myTab" role="tablist">
+                  <li class="nav-item" role="presentation"> <a class="nav-link active" id="login-tab" data-toggle="tab" href="#login" role="tab" aria-controls="login" aria-selected="true">Login</a> </li>
+                  <li class="nav-item" role="presentation"> <a class="nav-link" id="register-tab" data-toggle="tab" href="#register" role="tab" aria-controls="register" aria-selected="false">Register</a> </li>
+              </ul>
+              <div class="tab-content" id="myTabContent">
+                  <div class="tab-pane fade show active" id="login" role="tabpanel" aria-labelledby="login-tab">
+                      <h4 class="text-center mt-4 mb-4" style="text-transform: uppercase;">Login</h4>
+                      <form>
+                          <div class="form-row">
+                              <div class="form-group col-md-12"> <label for="inputName">Your Username</label> <input type="text" class="form-control" id="inputEmail4" placeholder="Enter your username" required=""> </div>
+                              <div class="form-group col-md-12"> <label for="inputName">Your Password</label> <input type="password" class="form-control" id="inputPassword4" placeholder="Enter your password" required=""> </div>
+                              <div class="form-group col-md-12">
+                                  <div class="d-flex flex-wrap justify-content-between align-items-center my-3">
+                                    <a href="#" target="_blank">Forgot Password?</a>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="mt-2 mb-3"> <button class="btn btn-primary full-width" type="submit">Login</button> </div>
+                      </form>
+                      {% comment %} <div class="social-area">
+                          <h3 class="title">Or</h3>
+                          <p class="text">Sign In with social media</p>
+                          <ul class="social-links">
+                              <li> <a href="#"> <i class="fab fa-facebook-f"></i> </a> </li>
+                              <li> <a href="#"> <i class="fab fa-google-plus-g"></i> </a> </li>
+                          </ul>
+                      </div> {% endcomment %}
+                  </div>
+                  <div class="tab-pane fade" id="register" role="tabpanel" aria-labelledby="register-tab">
+                      <h4 class="text-center mt-4 mb-4" style="text-transform: uppercase;">Register</h4>
+                      <form>
+                          <div class="form-row">
+                              <div class="form-group col-md-12"> <label for="inputName">Your Name</label> <input type="text" class="form-control" id="inputEmail4" placeholder="Enter your name" required=""> </div>
+                              <div class="form-group col-md-12"> <label for="inputName">Your Username</label> <input type="text" class="form-control" id="inputPassword4" placeholder="Enter your username" required=""> </div>
+                          </div>
+                          <div class="form-row">
+                              <div class="form-group col-md-12"> <label for="inputName">Your Email Address</label> <input type="email" class="form-control" id="inputEmail4" placeholder="Enter your email address" required=""> </div>
+                              <div class="form-group col-md-12"> <label for="inputName">Your Password</label> <input type="password" class="form-control" id="inputPassword4" placeholder="Enter your password" required=""> </div>
+                          </div>
+                          <div class="form-row">
+                              <div class="form-group col-md-12"> <label for="inputName">Your Confirm Password</label> <input type="password" class="form-control" id="inputPassword4" placeholder="Enter your confirm password" required=""> </div>
+                              <div class="form-group col-md-12"> <label for="inputName">Your Country</label> <select id="inputState" class="form-control" required="">
+                                      <option selected="">Choose Country</option>
+                                      <option>India</option>
+                                      <option>United States</option>
+                                      <option>Canda</option>
+                                      <option>Germany</option>
+                                  </select> </div>
+                          </div>
+                          <div class="form-group form-row mt-2"> <label class="col-md-2 col-form-label user_group">I am a</label>
+                              <div class="col-md-10 pt-1">
+                                  <div class="form-check form-check-inline"> <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> <label class="form-check-label" for="inlineRadio1">Customer</label> </div>
+                                  <div class="form-check form-check-inline"> <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> <label class="form-check-label" for="inlineRadio2">Vendor</label> </div>
+                                  <div class="form-check form-check-inline"> <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> <label class="form-check-label" for="inlineRadio2">Both</label> </div>
+                              </div>
+                          </div>
+                          <div class="form-group form-row">
+                              <div class="col-md-12"> <label class="custom-control custom-checkbox checkbox-lg"> <input type="checkbox" class="custom-control-input" id="customCheck1">
+                                      <div class="custom-control-label" for="customCheck1">I agree with <a href="#" target="_blank">terms and conditions</a></div>
+                                  </label> </div>
+                          </div>
+                          <hr class="mt-3 mb-4">
+                          <div class="col-12">
+                              <div class="d-flex flex-wrap justify-content-between align-items-center">
+                                  <div class="custom-checkbox d-block"> <a href="https://demochecks.com/demo/fickrr/login" class="nav-link-inline font-size-sm">Already have an account? Login</a> </div> <button class="btn btn-primary mt-3 mt-sm-0" type="submit">Register</button>
+                              </div>
+                          </div>
+                      </form>
+                  </div>
+              </div>
+          </div>
+      </div>
+    </div>
+
+
+</body>
+</html>

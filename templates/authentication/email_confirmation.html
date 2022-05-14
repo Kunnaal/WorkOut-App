@@ -1,0 +1,11 @@
+{% autoescape off %}
+
+    Welcome to dJango authenticator!
+
+    Hello {{ name }}
+
+    Please confirm your mail by pressing the link below:
+
+    http://{{ domain }}{% url 'activate' uidb64=uid token=token %}
+
+{% endautoescape %}
